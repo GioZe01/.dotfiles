@@ -1,0 +1,90 @@
+# Lavoro Work Directories - NEVER COMMIT THESE
+Lavoro/
+**/Lavoro/
+Documents/Lavoro/
+~/Documents/Lavoro/
+
+# Python Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# Backup files
+*.backup
+*.bak
+*~
+.*.swp
+.*.swo
+*.orig
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+Session.vim
+.netrwhist
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.cache
+
+# Git files
+*.patch
+*.diff
+
+# SSH and credentials
+*.pem
+*.key
+id_rsa
+id_ed25519
+known_hosts
+.ssh/
+
+# Local configuration
+local/
+*.local
+.env
+.env.local
+credentials.json
+secrets.json
+
+# Compiled output
+*.o
+*.so
+*.dll
+*.exe
+*.out
+*.app
+
+# Package manager directories
+node_modules/
+bower_components/
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z

@@ -1,0 +1,124 @@
+[user]
+	name = Gio
+	email = giovanni.terzuolo01@gmail.com
+
+[core]
+	editor = nvim
+	excludesfile = ~/.gitignore_global
+	autocrlf = input
+	filemode = false
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = false
+
+[push]
+	default = simple
+	autoSetupRemote = true
+
+[merge]
+	tool = nvimdiff
+	conflictstyle = diff3
+
+[diff]
+	tool = nvimdiff
+	colorMoved = default
+
+[color]
+	ui = auto
+	branch = auto
+	diff = auto
+	status = auto
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[alias]
+	# Short status
+	s = status -s
+	st = status
+
+	# Pretty log
+	l = log --oneline --graph --decorate
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lga = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+	# Commit
+	c = commit
+	cm = commit -m
+	ca = commit -a
+	cam = commit -am
+	amend = commit --amend
+
+	# Add
+	a = add
+	aa = add --all
+	ap = add --patch
+
+	# Branch
+	b = branch
+	ba = branch -a
+	bd = branch -d
+	bD = branch -D
+
+	# Checkout
+	co = checkout
+	cob = checkout -b
+
+	# Diff
+	d = diff
+	dc = diff --cached
+	ds = diff --staged
+
+	# Push/Pull
+	p = push
+	pf = push --force-with-lease
+	pl = pull
+
+	# Stash
+	ss = stash
+	sp = stash pop
+	sl = stash list
+
+	# Remote
+	r = remote
+	rv = remote -v
+
+	# Reset
+	unstage = reset HEAD --
+	undo = reset --soft HEAD^
+
+	# Show
+	last = log -1 HEAD --stat
+	show-files = diff-tree --no-commit-id --name-only -r
+
+	# Misc
+	aliases = config --get-regexp alias
+	contributors = shortlog --summary --numbered
+
+[help]
+	autocorrect = 1
+
+[credential]
+	helper = cache --timeout=3600
+
+[fetch]
+	prune = true
+
+[rerere]
+	enabled = true

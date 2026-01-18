@@ -1,0 +1,132 @@
+# Alacritty Terminal Configuration
+
+[window]
+# Window dimensions
+dimensions = { columns = 120, lines = 30 }
+
+# Window padding
+padding = { x = 10, y = 10 }
+
+# Window decorations
+decorations = "full"
+
+# Opacity
+opacity = 0.95
+
+[scrolling]
+# Maximum number of lines in scrollback buffer
+history = 10000
+
+# Number of lines scrolled per scroll
+multiplier = 3
+
+[font]
+# Font family - Clear retro programming font
+normal = { family = "DejaVu Sans Mono", style = "Book" }
+bold = { family = "DejaVu Sans Mono", style = "Bold" }
+italic = { family = "DejaVu Sans Mono", style = "Oblique" }
+bold_italic = { family = "DejaVu Sans Mono", style = "Bold Oblique" }
+
+# Font size - Larger for better readability
+size = 13.0
+
+# Font offset - Prevents overlapping
+offset = { x = 0, y = 1 }
+
+# Glyph offset - Fine-tune character positioning
+glyph_offset = { x = 0, y = 0 }
+
+[colors]
+# Retro terminal colors - High contrast for programming
+# Classic green phosphor terminal aesthetic
+
+[colors.primary]
+background = "#0a0e14"  # Deep black
+foreground = "#b3b1ad"  # Light gray for excellent readability
+
+[colors.cursor]
+text = "#0a0e14"
+cursor = "#53E2AE"  # Bright cyan cursor
+
+[colors.selection]
+text = "#0a0e14"
+background = "#53E2AE"
+
+# Normal colors - High contrast retro palette
+[colors.normal]
+black = "#01060E"
+red = "#EA6C73"      # Bright red for errors
+green = "#91B362"    # Retro green
+yellow = "#F9AF4F"   # Amber/orange
+blue = "#53BDFA"     # Bright blue
+magenta = "#FAE994"  # Light yellow
+cyan = "#90E1C6"     # Mint green
+white = "#C7C7C7"    # Light gray
+
+# Bright colors - Even higher contrast
+[colors.bright]
+black = "#686868"
+red = "#F07178"      # Vibrant red
+green = "#C2D94C"    # Bright retro green
+yellow = "#FFB454"   # Bright amber
+blue = "#59C2FF"     # Electric blue
+magenta = "#FFEE99"  # Bright yellow
+cyan = "#95E6CB"     # Bright mint
+white = "#FFFFFF"    # Pure white
+
+[cursor]
+# Cursor style
+style = { shape = "Block", blinking = "On" }
+
+# Cursor blink interval
+blink_interval = 750
+
+[selection]
+# Characters that are used as word separators
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+# Copy selection to clipboard on select
+save_to_clipboard = true
+
+[keyboard]
+# Key bindings for copy and paste with Ctrl+C and Ctrl+V
+bindings = [
+    # Copy with Ctrl+C (when text is selected)
+    { key = "C", mods = "Control", chars = "\u0003", mode = "~Vi|~Search" },
+    { key = "C", mods = "Control", action = "Copy", mode = "Vi|~Search" },
+
+    # Paste with Ctrl+V
+    { key = "V", mods = "Control", action = "Paste" },
+
+    # Also keep traditional shortcuts as fallback
+    { key = "C", mods = "Control|Shift", action = "Copy" },
+    { key = "V", mods = "Control|Shift", action = "Paste" },
+
+    # Search
+    { key = "F", mods = "Control|Shift", action = "SearchForward" },
+
+    # Clear screen
+    { key = "L", mods = "Control", chars = "\u000c" },
+
+    # New window
+    { key = "N", mods = "Control|Shift", action = "CreateNewWindow" },
+
+    # Font size adjustment
+    { key = "Plus", mods = "Control", action = "IncreaseFontSize" },
+    { key = "Minus", mods = "Control", action = "DecreaseFontSize" },
+    { key = "Key0", mods = "Control", action = "ResetFontSize" },
+
+    # Scrolling
+    { key = "PageUp", mods = "Shift", action = "ScrollPageUp" },
+    { key = "PageDown", mods = "Shift", action = "ScrollPageDown" },
+    { key = "Home", mods = "Shift", action = "ScrollToTop" },
+    { key = "End", mods = "Shift", action = "ScrollToBottom" },
+]
+
+[shell]
+# Shell program to run
+program = "/usr/bin/zsh"
+
+[env]
+# Extra environment variables
+TERM = "xterm-256color"
