@@ -202,23 +202,59 @@
 |------------|--------|
 | `<Leader>pf` | Find files in project |
 | `<Leader>ps` | Search (grep) in project files |
-| `<Leader>pv` | Open file explorer (netrw) |
-| `Ctrl+p` | Find git files |
-| `<Leader>pg` | Live grep in project |
+| `<Leader>pv` | Open file explorer (Oil.nvim) |
+| `<Leader>pg` | Git files |
 | `<Leader>pb` | Browse buffers |
 | `<Leader>ph` | Search help tags |
 | `<Leader>pr` | Search recent files |
+| `<Leader>pc` | Grep word under cursor |
+| `<Leader>pe` | File browser (Telescope) |
+| `<Leader>pp` | File browser (current buffer dir) |
 
-### File Explorer (Netrw)
+### Harpoon (Quick File Marks - ThePrimeagen's Workflow)
+| Keybinding | Action |
+|------------|--------|
+| `<Leader>a` | Add current file to harpoon |
+| `<Leader>h` | Toggle harpoon quick menu |
+| `<Leader>1` | Navigate to file 1 |
+| `<Leader>2` | Navigate to file 2 |
+| `<Leader>3` | Navigate to file 3 |
+| `<Leader>4` | Navigate to file 4 |
+| `<Leader>ph` | Open harpoon in Telescope |
+| `Ctrl+Shift+P` | Previous harpoon file |
+| `Ctrl+Shift+N` | Next harpoon file |
+
+**Harpoon Workflow**:
+1. Mark your most frequently edited files with `<Leader>a`
+2. Switch instantly between them with `<Leader>1-4`
+3. Perfect for switching between 3-5 files you're actively working on
+4. Per-project marks (automatically saved based on working directory)
+
+### File Explorer (Oil.nvim - Edit Filesystem Like a Buffer)
 | Key | Action |
 |-----|--------|
-| `<Leader>pv` | Open file explorer |
-| `Return` | Open file/directory |
-| `-` | Go up directory |
-| `d` | Create directory |
-| `%` | Create new file |
-| `D` | Delete file/directory |
-| `R` | Rename file |
+| `<Leader>pv` | Open parent directory in current window |
+| `-` | Open parent directory (anywhere) |
+| `<Leader>-` | Open file explorer (floating window) |
+| `<CR>` | Open file or directory |
+| `<C-s>` | Open in vertical split |
+| `<C-h>` | Open in horizontal split |
+| `<C-t>` | Open in new tab |
+| `<C-p>` | Preview file |
+| `<C-c>` | Close oil buffer |
+| `<C-l>` | Refresh |
+| `-` | Go to parent directory |
+| `_` | Open current working directory |
+| `g.` | Toggle hidden files |
+| `g?` | Show help |
+
+**Oil.nvim Workflow** (Edit filesystem like a buffer):
+1. Open with `<Leader>pv` or `-`
+2. Edit the buffer to rename files (just edit the line)
+3. Delete lines to delete files (`dd`)
+4. Create new lines to create files (`o` + type name)
+5. Save with `:w` to apply changes
+6. Visual select and delete to delete multiple files
 
 ### Git (Fugitive)
 | Keybinding | Action |
@@ -246,16 +282,47 @@
 | `<Leader>e` | Show diagnostic float |
 | `<Leader>q` | Show diagnostic list |
 
-### Completion (nvim-cmp)
+### Completion (nvim-cmp + AI)
 | Key | Action |
 |-----|--------|
 | `Ctrl+Space` | Trigger completion |
-| `Ctrl+n` | Next completion item |
-| `Ctrl+p` | Previous completion item |
-| `Ctrl+y` | Confirm completion |
+| `Ctrl+n` or `Tab` | Next completion item |
+| `Ctrl+p` or `Shift+Tab` | Previous completion item |
+| `<CR>` | Confirm completion |
 | `Ctrl+e` | Close completion menu |
 | `Ctrl+d` | Scroll docs down |
-| `Ctrl+u` | Scroll docs up |
+| `Ctrl+f` | Scroll docs up |
+
+**Completion Sources** (in priority order):
+1. **[AI]** - Codeium AI suggestions
+2. **[LSP]** - Language Server completions
+3. **[Snippet]** - Code snippets
+4. **[Path]** - File paths
+5. **[Buffer]** - Words from current buffer
+
+### AI Completion (Codeium)
+| Keybinding | Action |
+|------------|--------|
+| `Tab` | Accept AI suggestion |
+| `Alt+]` | Next AI suggestion |
+| `Alt+[` | Previous AI suggestion |
+| `<Leader>ai` | Open Codeium Chat |
+| `<Leader>ae` | Toggle Codeium on/off |
+| `<Leader>as` | Authenticate Codeium |
+
+**Codeium Setup** (first time):
+1. Start Neovim and wait for Codeium to load
+2. Run `:Codeium Auth` or press `<Leader>as`
+3. Browser will open for authentication
+4. Copy the token and paste back in Neovim
+5. AI suggestions will now appear automatically as you type
+
+**Features**:
+- Free alternative to GitHub Copilot
+- Multi-line code suggestions
+- Context-aware completions
+- Supports 70+ languages
+- Chat interface for code questions
 
 ### Buffers
 | Keybinding | Action |
@@ -515,6 +582,62 @@ Ctrl+u              " Scroll preview up
 Ctrl+d              " Scroll preview down
 ```
 
+### Harpoon (Quick File Marks)
+| Keybinding | Action |
+|------------|--------|
+| `<Leader>a` | Add file to harpoon |
+| `<Leader>h` | Toggle quick menu |
+| `<Leader>1-4` | Go to file 1-4 |
+
+**Harpoon Commands**:
+```vim
+:lua require("harpoon"):list():add()         " Add current file
+:lua require("harpoon"):list():remove()      " Remove current file
+:lua require("harpoon"):list():clear()       " Clear all marks
+```
+
+**Usage**:
+1. While working, mark files you frequently edit with `<Leader>a`
+2. Switch instantly between marked files with `<Leader>1`, `<Leader>2`, etc.
+3. Open the quick menu with `<Leader>h` to see all marked files
+4. Marks are per-project (based on working directory)
+5. Perfect for switching between 3-5 files you're actively editing
+
+### Oil.nvim (File Explorer)
+| Keybinding | Action |
+|------------|--------|
+| `<Leader>pv` or `-` | Open file explorer |
+| `<Leader>-` | Open in floating window |
+
+**In Oil.nvim**:
+```
+<CR>                " Open file/directory
+-                   " Go to parent directory
+g.                  " Toggle hidden files
+g?                  " Show help
+<C-s>               " Open in vertical split
+<C-h>               " Open in horizontal split
+<C-p>               " Preview file
+:w                  " Save changes (rename/delete/create)
+```
+
+**Editing Workflow**:
+1. Open Oil with `<Leader>pv` or `-`
+2. Edit lines to rename files (just change the text)
+3. Delete lines (`dd`) to delete files
+4. Add new lines (`o`) to create files
+5. Save with `:w` to apply all changes
+6. Changes are batch-applied when you save
+
+**Example**:
+```
+# Rename multiple files at once
+old_name.py    →    new_name.py    (edit the line)
+test.txt       →    [delete line with dd]
+               →    new_file.md    (add new line with o)
+:w                                  (save to apply)
+```
+
 ### Treesitter (Syntax Highlighting)
 ```vim
 :TSUpdate               " Update all parsers
@@ -546,12 +669,51 @@ grm                     " Decrement selection
 ```
 
 **Common LSP Servers**:
-- **Python**: pyright, pylsp
+- **Python**: pyright (type checking), ruff_lsp (linting + formatting)
 - **JavaScript/TypeScript**: tsserver
 - **Lua**: lua_ls
 - **Bash**: bashls
 - **JSON**: jsonls
 - **YAML**: yamlls
+- **Rust**: rust_analyzer
+
+**Python LSP Stack**:
+- **Pyright**: Type checking, code intelligence, auto-imports
+- **Ruff**: Fast linter and formatter (replaces black, isort, flake8)
+- Both work together: Pyright for types, Ruff for style and formatting
+
+### Codeium (AI Completion)
+```vim
+:Codeium Auth           " Authenticate (first time setup)
+:Codeium Toggle         " Enable/disable Codeium
+:Codeium Chat           " Open AI chat interface
+:Codeium Status         " Check authentication status
+```
+
+**Setup Instructions**:
+1. Open Neovim (Codeium loads automatically)
+2. Run `:Codeium Auth`
+3. Browser opens for authentication
+4. Sign in with GitHub/Google/GitLab
+5. Copy the authentication token
+6. Paste token in Neovim
+7. Start coding - suggestions appear automatically!
+
+**Features**:
+- **Free forever** - No credit card required
+- **Multi-line suggestions** - Complete functions and classes
+- **Context-aware** - Understands your codebase
+- **70+ languages** - Python, JS, TS, Rust, Go, Java, C++, etc.
+- **Chat interface** - Ask questions about code
+- **Fast** - Low latency suggestions
+- **Privacy** - Code is not used for training
+
+**Usage Tips**:
+- Suggestions appear automatically as you type
+- Press `Tab` to accept a suggestion
+- Press `Alt+]` or `Alt+[` to cycle through suggestions
+- Use `<Leader>ai` for chat mode to ask questions
+- Toggle off with `<Leader>ae` when doing sensitive work
 
 ### Fugitive (Git)
 ```vim
@@ -725,14 +887,23 @@ zw                      " Mark as misspelled
     ├── keymaps.lua             # Key mappings
     ├── autocmds.lua            # Autocommands
     └── plugins/
-        ├── telescope.lua       # Fuzzy finder
+        ├── telescope.lua       # Fuzzy finder + file browser
+        ├── harpoon.lua         # Quick file marks (NEW)
+        ├── file-explorer.lua   # Oil.nvim filesystem editor (NEW)
         ├── treesitter.lua      # Syntax highlighting
-        ├── lsp.lua             # LSP config
-        ├── completion.lua      # Autocompletion
-        ├── git.lua             # Git plugins
+        ├── lsp.lua             # LSP config (Pyright + Ruff)
+        ├── ai-completion.lua   # Codeium AI completion (NEW)
+        ├── session.lua         # Session management
+        ├── terminal.lua        # ToggleTerm
+        ├── testing.lua         # Neotest
+        ├── claude.lua          # Claude Code integration
+        ├── datascience.lua     # Jupyter, Molten, bioSyntax
+        ├── fugitive.lua        # Git integration
         ├── ui.lua              # UI enhancements
         ├── colorscheme.lua     # Color theme
-        └── editor.lua          # Editor plugins
+        ├── undotree.lua        # Undo history
+        ├── zen-mode.lua        # Distraction-free mode
+        └── utils.lua           # Utility plugins
 ```
 
 ### Edit Configuration
@@ -968,7 +1139,11 @@ u/Ctrl+r            → Undo/Redo
 LEADER (Space):
 <Leader>pf          → Find files
 <Leader>ps          → Search in files
-<Leader>pv          → File explorer
+<Leader>pv          → File explorer (Oil)
+<Leader>a           → Harpoon: Add file
+<Leader>h           → Harpoon: Menu
+<Leader>1-4         → Harpoon: Files 1-4
+<Leader>ai          → AI Chat (Codeium)
 <Leader>gs          → Git status
 <Leader>u           → Undotree
 <Leader>y           → Yank to clipboard

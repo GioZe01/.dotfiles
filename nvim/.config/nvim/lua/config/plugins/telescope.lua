@@ -7,6 +7,7 @@ return {
         "nvim-lua/plenary.nvim",
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
         "nvim-tree/nvim-web-devicons",
+        "nvim-telescope/telescope-file-browser.nvim",
     },
     cmd = "Telescope",
     keys = {
@@ -17,6 +18,8 @@ return {
         { "<leader>pg", "<cmd>Telescope git_files<cr>", desc = "Git files" },
         { "<leader>pr", "<cmd>Telescope oldfiles<cr>", desc = "Recent files" },
         { "<leader>pc", "<cmd>Telescope grep_string<cr>", desc = "Grep word under cursor" },
+        { "<leader>pe", "<cmd>Telescope file_browser<cr>", desc = "File browser" },
+        { "<leader>pp", "<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>", desc = "File browser (current buffer)" },
     },
     config = function()
         local telescope = require("telescope")
@@ -89,10 +92,24 @@ return {
                     override_file_sorter = true,
                     case_mode = "smart_case",
                 },
+                file_browser = {
+                    theme = "ivy",
+                    -- disables netrw and use telescope-file-browser in its place
+                    hijack_netrw = false,
+                    mappings = {
+                        ["i"] = {
+                            -- your custom insert mode mappings
+                        },
+                        ["n"] = {
+                            -- your custom normal mode mappings
+                        },
+                    },
+                },
             },
         })
 
         -- Load extensions
         telescope.load_extension("fzf")
+        telescope.load_extension("file_browser")
     end,
 }

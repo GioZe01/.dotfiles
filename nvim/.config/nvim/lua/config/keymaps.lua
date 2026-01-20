@@ -1,9 +1,13 @@
 -- Key mappings (ThePrimeagen style)
+--
+-- NOTE: Some keybindings are defined in their respective plugin files:
+-- - Harpoon: <leader>a (add), <leader>h (menu), <leader>1-4 (files) (see harpoon.lua)
+-- - Oil.nvim: <leader>pv, - for file explorer (see file-explorer.lua)
+-- - Telescope: <leader>p* for fuzzy finding (see telescope.lua)
+-- - LSP: gd, gr, K, <leader>ca, etc. (see lsp.lua)
+-- - AI: <leader>ai, <leader>ae for Codeium (see ai-completion.lua)
 
 local keymap = vim.keymap.set
-
--- File explorer
-keymap("n", "<leader>pv", vim.cmd.Ex, { desc = "Open file explorer" })
 
 -- Better up/down with word wrap
 keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })

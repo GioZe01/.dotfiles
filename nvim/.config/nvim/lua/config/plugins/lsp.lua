@@ -29,8 +29,11 @@ return {
                 ensure_installed = {
                     "lua_ls",
                     "pyright",
+                    "ruff_lsp", -- Fast Python linter/formatter
                     "rust_analyzer",
                     "tsserver",
+                    "bashls",
+                    "jsonls",
                 },
                 automatic_installation = true,
             })
@@ -72,9 +75,38 @@ return {
                             typeCheckingMode = "basic",
                             autoSearchPaths = true,
                             useLibraryCodeForTypes = true,
+                            diagnosticMode = "workspace",
                         },
                     },
                 },
+            })
+
+            -- Ruff (Python linter and formatter - fast alternative to flake8, black, isort)
+            lspconfig.ruff_lsp.setup({
+                on_attach = function(client, bufnr)
+                    -- Disable hover in favor of Pyright
+                    client.server_capabilities.hoverProvider = false
+                    on_attach(client, bufnr)
+                end,
+                capabilities = capabilities,
+                init_options = {
+                    settings = {
+                        -- Ruff language server settings
+                        args = {},
+                    },
+                },
+            })
+
+            -- Bash
+            lspconfig.bashls.setup({
+                on_attach = on_attach,
+                capabilities = capabilities,
+            })
+
+            -- JSON
+            lspconfig.jsonls.setup({
+                on_attach = on_attach,
+                capabilities = capabilities,
             })
 
             -- Lua
@@ -153,6 +185,7 @@ return {
             "L3MON4D3/LuaSnip",
             "saadparwaiz1/cmp_luasnip",
             "rafamadriz/friendly-snippets",
+            "Exafunction/codeium.nvim", -- AI completion
         },
         config = function()
             local cmp = require("cmp")
@@ -195,11 +228,12 @@ return {
                     end, { "i", "s" }),
                 }),
                 sources = cmp.config.sources({
-                    { name = "nvim_lsp" },
-                    { name = "luasnip" },
-                    { name = "path" },
+                    { name = "codeium", priority = 1000 }, -- AI completion
+                    { name = "nvim_lsp", priority = 900 },
+                    { name = "luasnip", priority = 750 },
+                    { name = "path", priority = 500 },
                 }, {
-                    { name = "buffer" },
+                    { name = "buffer", priority = 300 },
                 }),
                 window = {
                     completion = cmp.config.window.bordered(),
@@ -208,6 +242,7 @@ return {
                 formatting = {
                     format = function(entry, vim_item)
                         vim_item.menu = ({
+                            codeium = "[AI]",
                             nvim_lsp = "[LSP]",
                             luasnip = "[Snippet]",
                             buffer = "[Buffer]",
