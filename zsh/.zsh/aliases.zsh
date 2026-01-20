@@ -100,3 +100,19 @@ alias vol-mute='amixer set Master toggle'
 alias vol-50='amixer set Master 50%'
 alias vol-80='amixer set Master 80%'
 alias vol-100='amixer set Master 100%'
+
+# Printer management
+alias printers='lpstat -p -d'                           # List all printers and default
+alias pq='lpstat -o'                                    # Print queue
+alias pqall='lpstat -o -W all'                          # All jobs (completed + pending)
+alias pcancel='cancel -a'                               # Cancel all jobs
+alias pstatus='lpstat -l -p'                            # Detailed printer status
+alias pconf='system-config-printer'                     # GUI printer config
+alias pcups='xdg-open http://localhost:631'             # CUPS web interface
+alias ptest='lp /usr/share/cups/data/testprint'         # Print test page
+alias plogs='sudo tail -f /var/log/cups/error_log'      # View CUPS logs
+alias prestart='sudo systemctl restart cups'            # Restart CUPS service
+alias pdefault='lpstat -d'                              # Show default printer
+alias pdrivers='lpinfo -m'                              # List available drivers
+alias pdevices='lpinfo -v'                              # List available devices
+alias print='lp'                                        # Quick print command

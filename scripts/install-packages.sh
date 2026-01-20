@@ -52,6 +52,13 @@ PACKAGES=(
 
     # Bioinformatics (optional)
     # bioSyntax must be installed separately - see DATASCIENCE_NEOVIM.md
+
+    # Printing (CUPS)
+    "cups"                  # Common Unix Printing System
+    "cups-client"           # CUPS client programs
+    "cups-bsd"              # BSD lpr/lpd commands
+    "system-config-printer" # GUI printer configuration
+    "printer-driver-all"    # All available printer drivers
 )
 
 echo "Will install the following packages:"

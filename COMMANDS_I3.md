@@ -98,7 +98,7 @@
 ### Display Configuration
 | Keybinding | Action |
 |------------|--------|
-| `Mod+p` | Open arandr (graphical display manager) |
+| `Mod+Shift+d` | Open arandr (graphical display manager) |
 
 **Manual Monitor Setup:**
 ```bash
@@ -222,6 +222,90 @@ vol-mute  # Toggle mute
 # Check current volume
 vol       # Display current volume percentage
 ```
+
+---
+
+## Printer Management
+
+### Keyboard Controls
+| Keybinding | Action |
+|------------|--------|
+| `Mod+p` | Open printer management menu |
+| `Mod+Shift+p` | Open printer configuration GUI |
+| `Mod+Ctrl+p` | Open CUPS web interface |
+
+### Printer Menu Options
+When you press `Mod+p`, a rofi menu appears with these options:
+- **Configure Printers** - Open system-config-printer GUI
+- **CUPS Web Interface** - Open http://localhost:631 in browser
+- **View Print Queue** - Show active print jobs
+- **Cancel All Jobs** - Cancel all pending print jobs
+- **Print Test Page** - Send test page to default printer
+- **Restart CUPS** - Restart the printing service
+- **Printer Status** - Show detailed printer information
+- **View CUPS Logs** - Display recent CUPS error logs
+
+### Zsh Printer Aliases
+| Command | Action |
+|---------|--------|
+| `printers` | List all printers and show default |
+| `pq` | View print queue |
+| `pqall` | View all jobs (completed + pending) |
+| `pcancel` | Cancel all print jobs |
+| `pstatus` | Show detailed printer status |
+| `pconf` | Open printer configuration GUI |
+| `pcups` | Open CUPS web interface |
+| `ptest` | Print a test page |
+| `plogs` | View live CUPS error logs |
+| `prestart` | Restart CUPS service |
+| `pdefault` | Show default printer |
+| `pdrivers` | List available printer drivers |
+| `pdevices` | List available printer devices |
+| `print <file>` | Print a file |
+
+### Quick Printing from Terminal
+```bash
+# Print a file to default printer
+print document.pdf
+
+# Print to specific printer
+lp -d PrinterName document.pdf
+
+# Print multiple copies
+lp -n 5 document.pdf
+
+# Print with options
+lp -o media=a4 -o sides=two-sided-long-edge document.pdf
+
+# Print page range
+lp -P 1-10,15,20 document.pdf
+```
+
+### First-Time Setup
+1. **Install CUPS** (if not already installed):
+   ```bash
+   sudo apt install cups cups-client system-config-printer
+   ```
+
+2. **Start CUPS service**:
+   ```bash
+   sudo systemctl enable cups
+   sudo systemctl start cups
+   ```
+
+3. **Add yourself to lp group** (for permissions):
+   ```bash
+   sudo usermod -aG lp $USER
+   # Log out and back in for changes to take effect
+   ```
+
+4. **Add a printer**:
+   - Press `Mod+Shift+p` to open printer configuration
+   - Click "Add" to add a new printer
+   - Select your printer from the list
+   - Follow the setup wizard
+
+**For detailed printer management guide, see [PRINTER_MANAGEMENT.md](PRINTER_MANAGEMENT.md)**
 
 ---
 
@@ -387,7 +471,12 @@ MULTI-MONITOR:
 Mod+m               → Focus left monitor
 Mod+Shift+m         → Focus right monitor
 Mod+Ctrl+h/l        → Move workspace to monitor
-Mod+p               → Display settings (arandr)
+Mod+Shift+d         → Display settings (arandr)
+
+PRINTER:
+Mod+p               → Printer menu
+Mod+Shift+p         → Printer config GUI
+Mod+Ctrl+p          → CUPS web interface
 
 VPN:
 Mod+Shift+v         → Toggle VPN

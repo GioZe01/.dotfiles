@@ -128,7 +128,7 @@ bindsym $mod+m focus output left
 bindsym $mod+Shift+m focus output right
 
 # Launch arandr for monitor configuration
-bindsym $mod+p exec --no-startup-id arandr
+bindsym $mod+Shift+d exec --no-startup-id arandr
 
 # ==============================
 # Application Launchers
@@ -166,6 +166,19 @@ bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
 bindsym $mod+plus exec --no-startup-id amixer set Master 5%+
 bindsym $mod+minus exec --no-startup-id amixer set Master 5%-
 # Note: $mod+m is used for monitor focus, so use media key or status bar for mute
+
+# ==============================
+# Printer Management
+# ==============================
+
+# Open printer management menu
+bindsym $mod+p exec --no-startup-id ~/.config/i3/scripts/printer-menu.sh
+
+# Quick access to printer configuration
+bindsym $mod+Shift+p exec --no-startup-id system-config-printer
+
+# Open CUPS web interface
+bindsym $mod+Ctrl+p exec --no-startup-id xdg-open http://localhost:631
 
 # ==============================
 # System Controls
