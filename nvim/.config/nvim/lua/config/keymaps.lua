@@ -78,3 +78,42 @@ keymap("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Increase windo
 keymap("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
 keymap("n", "<S-l>", "<cmd>bnext<CR>", { desc = "Next buffer" })
 keymap("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Delete buffer" })
+
+-- Terminal toggles
+keymap("n", "<leader>tt", "<cmd>ToggleTerm direction=horizontal<cr>", { desc = "Toggle terminal (horizontal)" })
+keymap("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", { desc = "Toggle terminal (float)" })
+keymap("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<cr>", { desc = "Toggle terminal (vertical)" })
+keymap("n", "<leader>t1", "<cmd>1ToggleTerm<cr>", { desc = "Toggle terminal 1 (general)" })
+keymap("n", "<leader>t2", "<cmd>2ToggleTerm<cr>", { desc = "Toggle terminal 2 (testing)" })
+
+-- Terminal mode navigation
+keymap("t", "<C-h>", "<C-\\><C-n><C-w>h", { desc = "Move left from terminal" })
+keymap("t", "<C-j>", "<C-\\><C-n><C-w>j", { desc = "Move down from terminal" })
+keymap("t", "<C-k>", "<C-\\><C-n><C-w>k", { desc = "Move up from terminal" })
+keymap("t", "<C-l>", "<C-\\><C-n><C-w>l", { desc = "Move right from terminal" })
+keymap("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
+-- Test commands (neotest)
+keymap("n", "<leader>tn", function() require("neotest").run.run() end, { desc = "Run nearest test" })
+keymap("n", "<leader>tF", function() require("neotest").run.run(vim.fn.expand("%")) end, { desc = "Run test file" })
+keymap("n", "<leader>ta", function() require("neotest").run.run(vim.fn.getcwd()) end, { desc = "Run all tests" })
+keymap("n", "<leader>ts", function() require("neotest").summary.toggle() end, { desc = "Toggle test summary" })
+keymap("n", "<leader>to", function() require("neotest").output.open({ enter = true }) end, { desc = "Show test output" })
+keymap("n", "<leader>tw", function() require("neotest").watch.toggle(vim.fn.expand("%")) end, { desc = "Watch test file" })
+keymap("n", "<leader>tS", function() require("neotest").run.stop() end, { desc = "Stop tests" })
+
+-- Pytest in dedicated terminal
+keymap("n", "<leader>tp", function()
+    vim.cmd("2ToggleTerm")
+    vim.defer_fn(function()
+        if vim.b.terminal_job_id then
+            vim.api.nvim_chan_send(vim.b.terminal_job_id, "pytest -v\r")
+        end
+    end, 100)
+end, { desc = "Run pytest in terminal 2" })
+
+-- Claude Code integration
+keymap("n", "<leader>cc", "<cmd>Claude<cr>", { desc = "Open Claude with file" })
+keymap("v", "<leader>cs", "<cmd>ClaudeSelection<cr>", { desc = "Send selection to Claude" })
+keymap("n", "<leader>ct", "<cmd>ClaudeTerminal<cr>", { desc = "Claude in terminal" })
+keymap("n", "<leader>ca", ":ClaudeAsk ", { desc = "Ask Claude about file" })

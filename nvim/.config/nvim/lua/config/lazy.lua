@@ -60,6 +60,13 @@ require("lazy").setup({
         enabled = true,
         notify = false,
     },
+
+    -- Luarocks/hererocks configuration
+    -- Disable hererocks as it's only needed for molten-nvim which is disabled by default
+    rocks = {
+        enabled = false,  -- Disable to avoid warnings
+        hererocks = false,  -- Don't use hererocks
+    },
 })
 
 -- Keybinding to open lazy.nvim UI

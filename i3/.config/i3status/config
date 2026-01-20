@@ -2,7 +2,8 @@
 
 general {
     colors = true
-    interval = 5
+    interval = 1
+    output_format = "i3bar"
     color_good = "#2AA198"
     color_bad = "#586E75"
     color_degraded = "#DC322F"
@@ -11,9 +12,7 @@ general {
 order += "cpu_usage"
 order += "memory"
 order += "disk /"
-order += "wireless _first_"
 order += "ethernet _first_"
-order += "battery all"
 order += "volume master"
 order += "tztime local"
 
@@ -53,8 +52,8 @@ battery all {
 }
 
 volume master {
-    format = " ♪: %volume "
-    format_muted = " ♪: muted "
+    format = " 🔊 %volume "
+    format_muted = " 🔇 muted "
     device = "default"
     mixer = "Master"
     mixer_idx = 0

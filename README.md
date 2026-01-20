@@ -10,8 +10,13 @@ Comprehensive guides for every tool in this setup:
 - **[Tmux Commands](COMMANDS_TMUX.md)** - Session, window, and pane management with Vim-style navigation
 - **[Zsh Commands](COMMANDS_ZSH.md)** - Shell functions, aliases, and Lavoro project management
 - **[Neovim Commands](COMMANDS_NVIM.md)** - ThePrimeagen-style keybindings, LSP, Telescope, and plugin commands
+- **[Data Science & ML Guide](DATASCIENCE_NEOVIM.md)** - Jupyter, PyTorch, bioinformatics, and ML workflows in Neovim
 
 **Bonus Guides**:
+- [Work Command Guide](WORK_COMMAND_GUIDE.md) - Dynamic project management with custom shortcuts
+- [Status Bar Changes](STATUSBAR_CHANGES.md) - Interactive volume control and customizations
+- [Health Check Fixes](HEALTHCHECK_FIXES.md) - Fix all Neovim health check warnings
+- [Data Science Quick Fix](QUICKFIX_DATASCIENCE.md) - Fix plugin installation errors
 - [Git Push Instructions](GIT_PUSH_INSTRUCTIONS.md) - How to push these dotfiles to GitHub
 - [Add SSH Key to GitHub](ADD_SSH_KEY_TO_GITHUB.md) - SSH authentication setup (no passwords!)
 - [Push Safely Guide](PUSH_SAFELY.md) - Security measures to protect Lavoro work files
@@ -55,7 +60,22 @@ The installation script will guide you through the setup process with interactiv
 - **Persistent undo** with undotree visualization
 - **Fugitive** for Git integration
 - **Zen mode** for distraction-free coding
+- **Integrated terminal** with toggleterm.nvim (multiple persistent terminals)
+- **Testing framework** with neotest for Python/pytest
+- **Session management** with vim-obsession (per-project sessions)
+- **Claude Code integration** for AI-assisted development
 - **Leader key**: Space
+
+### Data Science & Machine Learning (Neovim)
+- **Jupyter integration** with molten.nvim and jupytext (edit .ipynb as .py)
+- **Image viewing** in terminal with image.nvim (requires Kitty terminal)
+- **PyTorch tensor visualization** with dispy.nvim (optional)
+- **Bioinformatics** syntax highlighting with bioSyntax (FASTQ, FASTA, SAM, VCF, etc.)
+- **Python venv management** with venv-selector.nvim
+- **CSV/TSV viewing** with column alignment
+- **Database client** for SQL queries (vim-dadbod-ui)
+- **Markdown preview** for documentation
+- **Enhanced work() function** with `-e` flag to auto-open Neovim with session
 
 ### Terminal (Alacritty)
 - **Ctrl+C and Ctrl+V** for copy/paste (not Ctrl+Shift)
@@ -72,7 +92,8 @@ The installation script will guide you through the setup process with interactiv
 - **Vim-like keybindings** for window management (Windows key + h/j/k/l)
 - **NordVPN integration** with toggle and server selection keybindings
 - **GPU monitoring** in status bar (utilization, temperature, memory)
-- **Enhanced status bar** showing VPN status, GPU stats, and system info
+- **Enhanced status bar** showing VPN status, GPU stats, volume control, and system info
+- **Interactive volume control** in status bar (click to mute, scroll to adjust)
 - **Rofi** application launcher
 - **Picom** compositor for visual effects
 - **Arandr** for GUI monitor configuration
@@ -239,7 +260,16 @@ work hyperdnabert     # or work-hdb
 work anamnesis        # or work-ana
 work prism_sr_hdnabert # or work-prism
 work cgkt             # or work-cgkt
+
+# Navigate and auto-open Neovim with session (NEW!)
+work -e hyperdnabert  # or: worke hyperdnabert
 ```
+
+This will:
+1. Change to the project directory
+2. Activate the Python virtual environment
+3. Open Neovim with the project session restored
+4. All your files, splits, and cursor positions are saved
 
 ### Recreate Virtual Environment
 
@@ -424,6 +454,25 @@ Then reload Zsh:
 ```bash
 exec zsh
 ```
+
+### 7. Setup Data Science & ML Features (Optional)
+
+If you want to use Jupyter, PyTorch, or bioinformatics tools in Neovim:
+
+```bash
+cd ~/.dotfiles
+./scripts/setup-datascience.sh
+```
+
+This will:
+- Install Python packages (jupyter, pynvim, matplotlib, etc.)
+- Optionally install bioSyntax for bioinformatics files
+- Enable data science plugins in Neovim
+- Setup Jupyter kernels
+
+**Note**: Some plugins (molten.nvim, image.nvim) are disabled by default because they require additional dependencies. The setup script will help you enable them.
+
+For manual setup and detailed guide, see [DATASCIENCE_NEOVIM.md](DATASCIENCE_NEOVIM.md).
 
 ## Updating
 

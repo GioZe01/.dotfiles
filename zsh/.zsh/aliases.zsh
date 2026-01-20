@@ -61,6 +61,9 @@ alias tk='tmux kill-session -t'
 alias dotfiles='cd ~/.dotfiles'
 alias lavoro='cd $LAVORO_DIR'
 
+# Work with editor shortcut
+alias worke='work -e'
+
 # fd-find compatibility (Ubuntu installs it as fdfind)
 if command -v fdfind &> /dev/null; then
     alias fd='fdfind'
@@ -88,3 +91,12 @@ alias ports='netstat -tulanp'
 
 # System info
 alias sysinfo='inxi -Fxz'
+
+# Audio controls
+alias vol='amixer get Master | grep -o "[0-9]*%"'
+alias vol-up='amixer set Master 5%+'
+alias vol-down='amixer set Master 5%-'
+alias vol-mute='amixer set Master toggle'
+alias vol-50='amixer set Master 50%'
+alias vol-80='amixer set Master 80%'
+alias vol-100='amixer set Master 100%'

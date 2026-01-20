@@ -295,6 +295,37 @@
 | `<Leader>zz` | Toggle zen mode |
 | `<Leader>zZ` | Toggle zen mode (full) |
 
+### Terminal (ToggleTerm)
+| Keybinding | Action |
+|------------|--------|
+| `<Leader>tt` | Toggle terminal (horizontal) |
+| `<Leader>tf` | Toggle terminal (float) |
+| `<Leader>tv` | Toggle terminal (vertical) |
+| `<Leader>t1` | Toggle terminal 1 (general) |
+| `<Leader>t2` | Toggle terminal 2 (testing) |
+| `Ctrl+h/j/k/l` | Navigate from terminal to windows |
+| `<Esc>` | Exit terminal mode |
+
+### Testing (Neotest)
+| Keybinding | Action |
+|------------|--------|
+| `<Leader>tn` | Run nearest test |
+| `<Leader>tF` | Run test file |
+| `<Leader>ta` | Run all tests |
+| `<Leader>ts` | Toggle test summary |
+| `<Leader>to` | Show test output |
+| `<Leader>tw` | Watch test file |
+| `<Leader>tS` | Stop tests |
+| `<Leader>tp` | Run pytest in terminal 2 |
+
+### Claude Code Integration
+| Keybinding | Action |
+|------------|--------|
+| `<Leader>cc` | Open Claude with current file |
+| `<Leader>cs` | Send selection to Claude (visual) |
+| `<Leader>ct` | Open Claude in terminal 3 |
+| `<Leader>ca` | Ask Claude about file |
+
 ### Search and Replace
 | Keybinding | Action |
 |------------|--------|
@@ -307,6 +338,36 @@
 | `<Leader>cc` | Close quickfix list |
 | `]q` | Next quickfix item |
 | `[q` | Previous quickfix item |
+
+### Data Science & ML (Molten/Jupyter)
+| Keybinding | Action |
+|------------|--------|
+| `<Leader>mi` | Initialize Molten kernel |
+| `<Leader>ml` | Evaluate line |
+| `<Leader>mv` | Evaluate visual selection |
+| `<Leader>mr` | Re-evaluate cell |
+| `<Leader>mo` | Show output |
+| `<Leader>mh` | Hide output |
+| `<Leader>md` | Delete cell |
+
+### Python Virtual Environments
+| Keybinding | Action |
+|------------|--------|
+| `<Leader>vs` | Select Python venv |
+| `<Leader>vc` | Select cached venv |
+
+### Database
+| Keybinding | Action |
+|------------|--------|
+| `<Leader>db` | Toggle Database UI |
+
+### Markdown Preview
+| Keybinding | Action |
+|------------|--------|
+| `<Leader>mp` | Markdown preview |
+| `<Leader>ms` | Stop preview |
+
+**For detailed data science, ML, and bioinformatics workflows, see [DATASCIENCE_NEOVIM.md](DATASCIENCE_NEOVIM.md)**
 
 ---
 

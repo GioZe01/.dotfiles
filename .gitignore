@@ -1,8 +1,12 @@
 # Lavoro Work Directories - NEVER COMMIT THESE
+Documents/Lavoro/Linfoma/ANAMNESIS/
 Lavoro/
 **/Lavoro/
 Documents/Lavoro/
 ~/Documents/Lavoro/
+
+# Work projects config (may contain sensitive paths)
+.zsh/work_projects.conf
 
 # Python Virtual Environments
 venv/

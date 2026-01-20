@@ -74,3 +74,8 @@ local undodir = vim.fn.expand("~/.vim/undodir")
 if vim.fn.isdirectory(undodir) == 0 then
     vim.fn.mkdir(undodir, "p")
 end
+
+-- Disable unused providers to avoid health check warnings
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+-- Node.js provider will be enabled when npm is installed

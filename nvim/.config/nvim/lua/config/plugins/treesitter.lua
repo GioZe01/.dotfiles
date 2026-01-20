@@ -16,6 +16,8 @@ return {
                     "json",
                     "vim",
                     "vimdoc",
+                    "markdown",
+                    "markdown_inline",
                 },
 
                 -- Install parsers synchronously

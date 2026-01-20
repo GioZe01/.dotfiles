@@ -153,6 +153,20 @@ psgrep          # ps aux | grep
 killall         # killall -9
 ```
 
+### Audio Controls
+```bash
+# Volume shortcuts
+vol             # Display current volume
+vol-50          # Set volume to 50%
+vol-80          # Set volume to 80%
+vol-100         # Set volume to 100%
+
+# Adjust volume
+vol-up          # Increase volume by 5%
+vol-down        # Decrease volume by 5%
+vol-mute        # Toggle mute on/off
+```
+
 ---
 
 ## Oh My Zsh

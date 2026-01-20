@@ -91,11 +91,15 @@ return {
         config = function(_, opts)
             local wk = require("which-key")
             wk.setup(opts)
-            wk.register({
-                ["<leader>p"] = { name = "+telescope" },
-                ["<leader>g"] = { name = "+git" },
-                ["<leader>d"] = { name = "+diagnostics" },
-                ["<leader>b"] = { name = "+buffer" },
+            wk.add({
+                { "<leader>p", group = "telescope" },
+                { "<leader>g", group = "git" },
+                { "<leader>d", group = "diagnostics" },
+                { "<leader>b", group = "buffer" },
+                { "<leader>c", group = "claude" },
+                { "<leader>t", group = "test/terminal" },
+                { "<leader>m", group = "molten/jupyter" },
+                { "<leader>v", group = "venv" },
             })
         end,
     },

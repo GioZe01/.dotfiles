@@ -27,6 +27,7 @@ PACKAGES=(
     "feh"
     "arandr"
     "alacritty"
+    "kitty"
 
     # Development tools
     "ripgrep"
@@ -40,6 +41,17 @@ PACKAGES=(
     # Python development
     "python3-pip"
     "python3-venv"
+    "python3-dev"
+
+    # Data Science & ML dependencies
+    "libreadline-dev"       # For molten-nvim (Lua compilation)
+    "nodejs"                # For markdown-preview.nvim
+    "npm"                   # For markdown-preview.nvim
+    "imagemagick"           # For image.nvim
+    "libmagickwand-dev"     # For image processing
+
+    # Bioinformatics (optional)
+    # bioSyntax must be installed separately - see DATASCIENCE_NEOVIM.md
 )
 
 echo "Will install the following packages:"

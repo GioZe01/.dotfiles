@@ -184,6 +184,47 @@ nordvpn countries
 
 ---
 
+## Audio Controls
+
+### Keyboard Controls
+| Keybinding | Action |
+|------------|--------|
+| `XF86AudioRaiseVolume` | Increase volume by 5% |
+| `XF86AudioLowerVolume` | Decrease volume by 5% |
+| `XF86AudioMute` | Toggle mute |
+| `Mod+Plus` | Increase volume by 5% (alternative) |
+| `Mod+Minus` | Decrease volume by 5% (alternative) |
+
+**Note**: `Mod+m` is used for monitor focus. Use media keys or click the status bar volume icon to mute.
+
+### Status Bar Controls (Top Bar)
+| Mouse Action | Effect |
+|--------------|--------|
+| `Left Click on Volume` | Toggle mute/unmute |
+| `Scroll Up on Volume` | Increase volume by 5% |
+| `Scroll Down on Volume` | Decrease volume by 5% |
+
+**Volume Display**: Shows 🔊 icon with current percentage (e.g., "🔊 80%")
+**Muted Display**: Shows 🔇 icon when muted
+
+**Manual Volume Commands:**
+```bash
+# Set specific volume
+vol-50    # Set to 50%
+vol-80    # Set to 80%
+vol-100   # Set to 100%
+
+# Adjust volume
+vol-up    # Increase by 5%
+vol-down  # Decrease by 5%
+vol-mute  # Toggle mute
+
+# Check current volume
+vol       # Display current volume percentage
+```
+
+---
+
 ## System Control
 
 | Keybinding | Action |
