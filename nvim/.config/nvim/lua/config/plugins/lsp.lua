@@ -7,7 +7,8 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
+            -- Pin to version compatible with Neovim 0.9.x (before automatic_enable feature)
+            { "williamboman/mason-lspconfig.nvim", version = "1.29.0" },
             "hrsh7th/cmp-nvim-lsp",
             { "folke/neodev.nvim", opts = {} },
         },
