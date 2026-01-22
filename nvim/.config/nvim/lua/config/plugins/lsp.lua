@@ -25,17 +25,20 @@ return {
             })
 
             -- Setup mason-lspconfig
+            -- Note: automatic_enable requires Neovim 0.11+, disabled for compatibility with 0.9.x
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "lua_ls",
                     "pyright",
                     "ruff_lsp", -- Fast Python linter/formatter
                     "rust_analyzer",
-                    "tsserver",
+                    "ts_ls", -- TypeScript (renamed from tsserver)
                     "bashls",
                     "jsonls",
                 },
                 automatic_installation = true,
+                -- Disable automatic_enable (requires Neovim 0.11+)
+                automatic_enable = false,
             })
 
             -- LSP keybindings
