@@ -5,6 +5,9 @@
 return {
     "stevearc/oil.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    -- Load immediately so it can hijack directory buffers (nvim . or nvim /path/to/folder)
+    lazy = false,
+    priority = 1000,
     keys = {
         { "-", "<CMD>Oil<CR>", desc = "Open parent directory" },
         { "<leader>pv", "<CMD>Oil<CR>", desc = "Open file explorer" },

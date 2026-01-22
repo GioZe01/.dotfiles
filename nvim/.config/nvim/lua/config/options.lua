@@ -79,3 +79,10 @@ end
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
 -- Node.js provider will be enabled when npm is installed
+
+-- Disable netrw (Vim's built-in file explorer) in favor of Oil.nvim
+-- This MUST be set before loading plugins so Oil.nvim can hijack directory buffers
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrwSettings = 1
+vim.g.loaded_netrwFileHandlers = 1
